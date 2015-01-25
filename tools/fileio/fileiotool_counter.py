@@ -25,18 +25,13 @@ def update_counter(file_name, reset=False):
 	"""
 	if os.path.exists(file_name) and not(reset):
 		try:
-			f = open(file_name,'r')
+			f = open(file_name,'rw+')
 		except:
 			print "Unexpected error!"
 			return
 		for line in f:
 			current_val = int(line)
-		f.close()
-		try:
-			f = open(file_name,'wt')
-		except:
-			print "Unexpected error!"
-			return
+		f.seek(0,0)
 	else:
 		try:
 			f = open(file_name,'wt')
